@@ -16,7 +16,11 @@ This initializes a development environment in the `local` directory.  In particu
 
 Once complete, the Islandora stack will be running.  Drupal is accessible at:
 
-http://islandora.isle-dc.localhost
+http://islandora.idc.localhost
+
+Note:  This URL will work fine in Chrome, which presumes *.localhost means 127.0.0.1.  Otherwise, add to your `/etc/hosts`
+
+    127.0.0.1 islandora.idc.localhost
 
 Look at docker-compose.env.yml for passwords, but the default password for Drupal is `admin:password`.
 
