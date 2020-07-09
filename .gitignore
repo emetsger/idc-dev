@@ -1,3 +1,4 @@
 local/*
 !local/.env
 !local/docker-compose.env.yml
+!local/repos.conf

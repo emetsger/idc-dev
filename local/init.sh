@@ -1,5 +1,5 @@
 #!/bin/bash
-source .env
+source repos.conf
 git clean -fdX
 ISLE_BRANCH=${ISLE_BRANCH:-development}
 ISLE_REPO=${ISLE_REPO:-}
@@ -20,6 +20,9 @@ checkout $DRUPAL_SITE_REPO $DRUPAL_SITE_BRANCH codebase
 
 cp -r .isle/* .
 make
+if [[ $(docker-compose ps -q) ]] ; then
+	docker-compose down -v
+fi
 docker-compose up -d
 docker-compose exec drupal with-contenv bash -lc 'COMPOSER_MEMORY_LIMIT=-1 composer install'
 make install
