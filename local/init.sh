@@ -23,6 +23,7 @@ make
 if [[ $(docker-compose ps -q) ]] ; then
 	docker-compose down -v
 fi
+sed -i 's/drupal:rw/drupal:delegated/g' docker-compose.yml
 docker-compose up -d
 docker-compose exec drupal with-contenv bash -lc 'COMPOSER_MEMORY_LIMIT=-1 composer install'
 make install
