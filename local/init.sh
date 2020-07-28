@@ -11,7 +11,7 @@ function checkout { # checkout $repo $branch $into_dir
   if [ -d $DIR ]; then
     (cd $DIR; git checkout $BRANCH || exit )
   else
-    git clone --branch $BRANCH $REPO $DIR || exit
+    (git clone $REPO $DIR || exit && cd $DIR && git checkout $BRANCH)
   fi
 }
 
